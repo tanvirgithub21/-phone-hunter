@@ -18,5 +18,36 @@ h1, h2, h3, h4, h5, h6{
 /* logo style  */
 .logo h2{
     color: rgb(10, 11, 48);
-    
+}
+
+/* phone card and img and btn style  */
+#showPhoneCard{
+    color: rgb(1, 0, 44);
+}
+.cardBody:hover{
+    background-color: rgb(245, 245, 245);
+    transition: ease-in-out 0.3s;
+}
+#phoneImg{
+    width: 180px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+.cardBtnDiv{
+    display: flex;
+    justify-content: center;
+}
+.button {
+    background-color: rgb(8, 83, 245);
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 4px;
+    cursor: pointer;
+    border-radius: 8px;
 }
