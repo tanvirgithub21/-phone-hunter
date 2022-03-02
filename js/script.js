@@ -1,10 +1,10 @@
-// find url by Player 
+// find url by Phone 
 const allPhones = () => {
     const searchInput = document.getElementById("searchInput").value;
     
-    const playerUrl =`https://openapi.programming-hero.com/api/phones?search=${searchInput}`;
+    const phoneUrl =`https://openapi.programming-hero.com/api/phones?search=${searchInput}`;
 
-    fetch(playerUrl)
+    fetch(phoneUrl)
     .then(res => res.json())
     .then(data => displayPhoneUI(data.data, data.status))
 };
@@ -17,7 +17,7 @@ const displayPhoneUI = (phones, availableData) => {
     if(availableData){
         for(phone of phones){
             const addNewCard = document.createElement("div");
-            addNewCard.classList.add('card', 'cardBox', 'col-lg-4', 'my-3');
+            addNewCard.classList.add('card', 'cardBox', 'col-md-4', 'my-3');
     
             addNewCard.innerHTML = `
                 <img src=${phone.image} class="card-img-top" id="phoneImg"  alt="iphone">
@@ -26,18 +26,32 @@ const displayPhoneUI = (phones, availableData) => {
                     <p class="card-text PhoneBrand text-center">${phone.brand}</p>
     
                     <div class="cardBtnDiv">
-                        <button class="button" id="detailsBtn">Details</button>
+                        <button onclick="detailsUrl('${phone.slug}')" class="button" id="detailsBtn">Details</button>
                     </div>
     
                 </div>
             `;
-    
+            
             phoneContainer.appendChild(addNewCard);
-            // console.log(phone)
         }
     }
     else{
         const noDataFound = document.getElementById("noDataFound").style.display = "flex"
     }
-}
+};
 
+// find url by phone Details information 
+
+const detailsUrl = (idNumber) => {
+    const phoneDetailsUrl = `https://openapi.programming-hero.com/api/phone/${idNumber}`;
+
+    fetch(phoneDetailsUrl)
+    .then(res => res.json())
+    .then(data => displayDetails(data.data))
+};
+
+
+const displayDetails = details => {
+    console.log(details)
+    
+}

@@ -20,12 +20,12 @@
 
             <div class="row my-4">
 
-                <div class="col-lg-7 logo"><!--logo-->
+                <div class="col-md-7 logo"><!--logo-->
                     <h2>Best Mobile Finder</h2>
                 </div>
-                <div class="col-lg-5 search"><!--Search bar-->
+                <div class="col-md-5 search"><!--Search bar-->
                     <div class="input-group">
-                        <input id="searchInput" type="search" class="form-control rounded" placeholder="Search Best Phone" aria-label="Search" aria-describedby="search-addon" />
+                        <input value="iphone" id="searchInput" type="search" class="form-control rounded" placeholder="Search Best Phone" aria-label="Search" aria-describedby="search-addon" />
                         <button onclick="allPhones()" id="searchBtn" type="button" class="btn btn-outline-primary">Search</button>
                     </div>
                 </div>
@@ -36,6 +36,74 @@
     </header>
 
     <main>
+        <!-- Mobile Details Information  -->
+        <section id="modileDataInfoBox" class="mobileDetailsInfo">
+            <div class="container">
+
+                <div class="row my-4">
+
+                    <div class="mobileImg col-12 col-sm-12 col-md-3"><!--Mobile Image-->
+                        <div class="imgWrap">
+                            <img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg" alt="Img">
+                        </div>
+                    </div>
+                    <div class="mobileImg col-12 col-sm-12 col-md-9"><!--Mobile Features-->
+                        <div class="row">
+
+                            <div class="col-12 col-sm-12 col-md-7 border pt-3 pb-3 ps-3">
+                                <h5>I Phone 13 Pro Max</h5>
+                                <p>Released 2021, September 24</p>
+
+                                <!-- Main Features markup start -->
+                                <div class="mainFeatures">
+                                    <h5>Main Features</h5>
+                                    <p>Storage: "128GB/256GB/1TB storage, no card slot</p>
+                                    <p>Display Size: "6.7 inches, 109.8 cm2 (~87.4% screen-to-body ratio)</p>
+                                    <p>ChipSet: "Apple A15 Bionic (5 nm)</p>
+                                    <p>Memory: "128GB 6GB RAM, 256GB 6GB RAM, 512GB 6GB RAM, 1TB 6GB RAM</p>
+                                </div>
+                                <!-- Main Features markup end -->
+
+
+                            </div>
+
+                            <!-- Others Information markup start -->
+                            <div class="col-12 col-sm-12 col-md-5 border pt-3 pb-3 ps-3">
+                                <h5>Others</h5>
+                                <p>WLAN": "Wi-Fi 802.11 a/b/g/n/ac/6, dual-band, hotspot</p>
+                                <p>Bluetooth": "5.0, A2DP, LE",</p>
+                                <p>GPS": "Yes, with A-GPS, GLONASS, GALILEO, BDS, QZSS"</p>
+                                <p>NFC": "Yes"</p>
+                                <p>Radio": "No</p>
+                                <p>USB": "Lightning, USB 2.0</p>
+                            </div>
+                            <!-- Others Information markup end  -->
+
+
+                            <!-- Sensors Information markup start -->
+                            <div class="col-12 col-sm-12 col-md-12 border pt-3 ps-3">
+                                <h5>sensors</h5>
+
+                                <ul>
+                                    <li>Face ID</li>
+                                    <li>accelerometer</li>
+                                    <li>gyro</li>
+                                    <li>proximity</li>
+                                    <li>compass</li>
+                                    <li>barometer</li>
+                                </ul>
+
+                            </div>
+                            <!-- Sensors Information markup end  -->
+
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
 
         <!-- Mobile Card Html markup start -->
         <section class="searchResult">
