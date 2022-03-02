@@ -196,3 +196,6 @@ console.log(sensorsDetails[5])
 
 
 
+
+
+
