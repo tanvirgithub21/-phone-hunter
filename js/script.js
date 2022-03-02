@@ -9,15 +9,18 @@ const allPhones = () => {
     .then(data => displayPhoneUI(data.data, data.status))
 };
 
+
 // display UI all phones 
 const displayPhoneUI = (phones, availableData) => {
     const phoneContainer = document.getElementById("showPhoneCard");
     phoneContainer.innerText = "";
 
+    const fast20phone = phones.slice(0, 20);
+
     if(availableData){
-        for(phone of phones){
+        for(phone of fast20phone){
             const addNewCard = document.createElement("div");
-            addNewCard.classList.add('card', 'cardBox', 'col-md-4', 'my-3');
+            addNewCard.classList.add('card', 'cardBox', 'col-md-3', 'my-3');
     
             addNewCard.innerHTML = `
                 <img src=${phone.image} class="card-img-top" id="phoneImg"  alt="iphone">
@@ -51,7 +54,101 @@ const detailsUrl = (idNumber) => {
 };
 
 
+//Release Date function
+const showReleaseDate = releaseDate => {
+    let result = "";
+    if(releaseDate){
+        result = releaseDate;
+    }
+    else{
+        result = "No Release Date Found"
+    }
+    return result;
+};
+
+
+// display phone detail information UI
 const displayDetails = details => {
-    console.log(details)
+    console.log(details);
+
+    const mainFea = details.mainFeatures; //main features details
+    const sensorsDetails = details.mainFeatures.sensors; //main features details
+    const others = details.others; //others details
+
+
+    const mobileDataInfoBox = document.getElementById("mobileDataInfoBox");
     
-}
+    mobileDataInfoBox.innerText = ""; // Clear Prevues Data
+
+    const div = document.createElement("div");
+
+    div.classList.add("container")
+
+    div.innerHTML = `
+            <div class="row my-4">
+
+                <div class="mobileImg col-12 col-sm-12 col-md-3"><!--Mobile Image-->
+                    <div class="imgWrap">
+                        <img src=${details.image}>
+                    </div>
+                </div>
+                <div class="mobileImg col-12 col-sm-12 col-md-9"><!--Mobile Features-->
+                    <div class="row">
+
+                        <div class="col-12 col-sm-12 col-md-7 border pt-3 pb-3 ps-3">
+                            <h5>${details.name}</h5>
+                            <p>${showReleaseDate(details.releaseDate)}</p>
+
+                            <!-- Main Features markup start -->
+                            <div class="mainFeatures">
+                                <h5>Main Features</h5>
+                                <p>Storage: ${mainFea.storage}</p>
+                                <p>Display Size: ${mainFea.displaySize}</p>
+                                <p>ChipSet: ${mainFea.chipSet}</p>
+                                <p>Memory: ${mainFea.memory}</p>
+                            </div>
+                            <!-- Main Features markup end -->
+
+
+                        </div>
+
+                        <!-- Others Information markup start -->
+                        <div class="col-12 col-sm-12 col-md-5 border pt-3 pb-3 ps-3">
+                            <h5>Others</h5>
+                            <!-- <p>WLAN: ${others.WLAN}</p> -->
+                            <p>Bluetooth: ${others.Bluetooth}</p>
+                            <p>GPS: ${others.GPS}</p>
+                            <p>NFC: ${others.NFC}</p>
+                            <p>Radio: ${others.Radio}</p>
+                            <p>USB: ${others.USB}</p>
+                        </div>
+                        <!-- Others Information markup end  -->
+
+
+                        <!-- Sensors Information markup start -->
+                        <div class="col-12 col-sm-12 col-md-12 border pt-3 ps-3">
+                            <h5>Sensors</h5>
+
+                            <ul>
+                                <li>${sensorsDetails[0]}</li>
+                                <li>${sensorsDetails[1]}</li>
+                                <li>${sensorsDetails[2]}</li>
+                                <li>${sensorsDetails[3]}</li>
+                                <li>${sensorsDetails[4]}</li>
+                                <li>${sensorsDetails[5]}</li>
+                            </ul>
+
+                        </div>
+                        <!-- Sensors Information markup end  -->
+
+                    </div>
+                </div>
+
+            </div>
+        `;
+
+
+        mobileDataInfoBox.appendChild(div);
+
+};
+
