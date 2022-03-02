@@ -22,7 +22,7 @@ const loadingOnOff = (placeName, onOrOff, position) => {
 // find url by Phone 
 const allPhones = () => {
     // call loading function 
-    loadingOnOff("showPhoneCard", "flex", "nothing");
+    loadingOnOff("showPhoneCard", "flex", "position");
 
     const searchInput = document.getElementById("searchInput").value;
     
@@ -66,7 +66,7 @@ const displayPhoneUI = (phones, availableData) => {
             document.getElementById("noDataFound").style.display = "none";
 
             // call loading function 
-            loadingOnOff("mobileDataInfoBox", "none", "nothing");
+            loadingOnOff("mobileDataInfoBox", "none", "position");
 
             phoneContainer.appendChild(addNewCard);
 
@@ -76,7 +76,7 @@ const displayPhoneUI = (phones, availableData) => {
     else{
         const removedPhoneData = document.getElementById("mobileDataInfoBox");
         removedPhoneData.innerText = "";
-        loadingOnOff("showPhoneCard", "none", "nothing");
+        loadingOnOff("showPhoneCard", "none", "position");
         document.getElementById("noDataFound").style.display = "flex";
     }
 };
@@ -193,9 +193,3 @@ console.log(sensorsDetails[5])
         mobileDataInfoBox.appendChild(div);
 
 };
-
-
-
-
-
-
