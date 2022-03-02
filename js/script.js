@@ -1,6 +1,8 @@
 // loading on off function
 const loadingOnOff = (placeName, onOrOff, position) => {
     const getDiv = document.getElementById(placeName);
+    const removedPhoneData = document.getElementById("mobileDataInfoBox");
+        removedPhoneData.innerText = "";
 
 
     const div = document.createElement("div");
@@ -105,7 +107,7 @@ const showReleaseDate = releaseDate => {
 
 
 // display phone detail information UI
-const displayDetails = details => {
+    const displayDetails = details => {
 
     const mainFea = details.mainFeatures; //main features details
     const sensorsDetails = details.mainFeatures.sensors; //main features details
@@ -165,13 +167,14 @@ const displayDetails = details => {
                         <div id="addSensors" class="col-12 col-sm-12 col-md-12 border pt-3 ps-3">
                             <h5>Sensors</h5>
 
-                            <ul id="addListItem">
-                            
-                                <li> checkUndefined(sensorsDetails[0])</li>
                                 
-                                
-                                
-                            </ul>
+                                <p>${(sensorsDetails[0] !== undefined) ? sensorsDetails[0] : 'No Data'}</p>
+                                <p>${(sensorsDetails[1] !== undefined) ? sensorsDetails[1] : 'No Data'}</p>
+                                <p>${(sensorsDetails[2] !== undefined) ? sensorsDetails[2] : 'No Data'}</p>
+                                <p>${(sensorsDetails[3] !== undefined) ? sensorsDetails[3] : 'No Data'}</p>
+                                <p>${(sensorsDetails[4] !== undefined) ? sensorsDetails[4] : 'No Data'}</p>
+                                <p>${(sensorsDetails[5] !== undefined) ? sensorsDetails[5] : 'No Data'}</p>
+
 
                         </div>
                         <!-- Sensors Information markup end  -->
@@ -183,25 +186,13 @@ const displayDetails = details => {
         `;
 
 
-        // add Sensors li 
-        const addSensorInfo = () => {
-            const sensorsDiv = document.getElementById("addSensors");
-            const ul = document.createElement("ul");
-
-            for(liItem of sensorsDetails){
-                ul.innerHTML = `
-                    <li>${liItem}</li>
-                `;
-            }
-            sensorsDiv.appendChild(ul);
-        }
-
-        // call function add sensore
-        
+console.log(sensorsDetails[5])
 
         // call loading function 
         loadingOnOff("showPhoneCard", "none", "position");
         mobileDataInfoBox.appendChild(div);
 
 };
+
+
 
