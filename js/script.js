@@ -1,5 +1,27 @@
+// loading on off function
+const loadingOnOff = (placeName, onOrOff, position) => {
+    const getDiv = document.getElementById(placeName);
+
+
+    const div = document.createElement("div");
+    div.classList.add(position);
+    div.innerHTML = `
+        <div class="loading" id="loading">
+            <div class="spinner-border" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+    `;
+    getDiv.appendChild(div);
+
+    const showOrNot = document.getElementById("loading").style.display = onOrOff;
+}
+
 // find url by Phone 
 const allPhones = () => {
+    // call loading function 
+    loadingOnOff("showPhoneCard", "flex", "nothing");
+
     const searchInput = document.getElementById("searchInput").value;
     
     const phoneUrl =`https://openapi.programming-hero.com/api/phones?search=${searchInput}`;
@@ -9,9 +31,9 @@ const allPhones = () => {
     .then(data => displayPhoneUI(data.data, data.status))
 };
 
-
 // display UI all phones 
 const displayPhoneUI = (phones, availableData) => {
+    const searchInputValue = document.getElementById("searchInput").value;
     const phoneContainer = document.getElementById("showPhoneCard");
     phoneContainer.innerText = "";
 
@@ -34,25 +56,40 @@ const displayPhoneUI = (phones, availableData) => {
     
                 </div>
             `;
-            
+
+            // clear input value
+            const searchInput = document.getElementById("searchInput");
+            searchInput.value = "";
+
+            document.getElementById("noDataFound").style.display = "none";
+
+            // call loading function 
+            loadingOnOff("mobileDataInfoBox", "none", "nothing");
+
             phoneContainer.appendChild(addNewCard);
+
         }
     }
+    
     else{
-        const noDataFound = document.getElementById("noDataFound").style.display = "flex"
+        const removedPhoneData = document.getElementById("mobileDataInfoBox");
+        removedPhoneData.innerText = "";
+        loadingOnOff("showPhoneCard", "none", "nothing");
+        document.getElementById("noDataFound").style.display = "flex";
     }
 };
 
 // find url by phone Details information 
-
 const detailsUrl = (idNumber) => {
+    // call loading function 
+    loadingOnOff("showPhoneCard", "flex", "position");
+
     const phoneDetailsUrl = `https://openapi.programming-hero.com/api/phone/${idNumber}`;
 
     fetch(phoneDetailsUrl)
     .then(res => res.json())
     .then(data => displayDetails(data.data))
 };
-
 
 //Release Date function
 const showReleaseDate = releaseDate => {
@@ -69,7 +106,6 @@ const showReleaseDate = releaseDate => {
 
 // display phone detail information UI
 const displayDetails = details => {
-    console.log(details);
 
     const mainFea = details.mainFeatures; //main features details
     const sensorsDetails = details.mainFeatures.sensors; //main features details
@@ -115,7 +151,7 @@ const displayDetails = details => {
                         <!-- Others Information markup start -->
                         <div class="col-12 col-sm-12 col-md-5 border pt-3 pb-3 ps-3">
                             <h5>Others</h5>
-                            <!-- <p>WLAN: ${others.WLAN}</p> -->
+                            <p>WLAN: ${others.WLAN}</p>
                             <p>Bluetooth: ${others.Bluetooth}</p>
                             <p>GPS: ${others.GPS}</p>
                             <p>NFC: ${others.NFC}</p>
@@ -126,16 +162,15 @@ const displayDetails = details => {
 
 
                         <!-- Sensors Information markup start -->
-                        <div class="col-12 col-sm-12 col-md-12 border pt-3 ps-3">
+                        <div id="addSensors" class="col-12 col-sm-12 col-md-12 border pt-3 ps-3">
                             <h5>Sensors</h5>
 
-                            <ul>
-                                <li>${sensorsDetails[0]}</li>
-                                <li>${sensorsDetails[1]}</li>
-                                <li>${sensorsDetails[2]}</li>
-                                <li>${sensorsDetails[3]}</li>
-                                <li>${sensorsDetails[4]}</li>
-                                <li>${sensorsDetails[5]}</li>
+                            <ul id="addListItem">
+                            
+                                <li> checkUndefined(sensorsDetails[0])</li>
+                                
+                                
+                                
                             </ul>
 
                         </div>
@@ -148,6 +183,24 @@ const displayDetails = details => {
         `;
 
 
+        // add Sensors li 
+        const addSensorInfo = () => {
+            const sensorsDiv = document.getElementById("addSensors");
+            const ul = document.createElement("ul");
+
+            for(liItem of sensorsDetails){
+                ul.innerHTML = `
+                    <li>${liItem}</li>
+                `;
+            }
+            sensorsDiv.appendChild(ul);
+        }
+
+        // call function add sensore
+        
+
+        // call loading function 
+        loadingOnOff("showPhoneCard", "none", "position");
         mobileDataInfoBox.appendChild(div);
 
 };

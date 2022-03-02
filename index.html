@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-md-5 search"><!--Search bar-->
                     <div class="input-group">
-                        <input value="iphone" id="searchInput" type="search" class="form-control rounded" placeholder="Search Best Phone" aria-label="Search" aria-describedby="search-addon" />
+                        <input id="searchInput" type="search" class="form-control rounded" placeholder="Search Best Phone" aria-label="Search" aria-describedby="search-addon" />
                         <button onclick="allPhones()" id="searchBtn" type="button" class="btn btn-outline-primary">Search</button>
                     </div>
                 </div>
@@ -38,7 +38,10 @@
     <main>
         <!-- Mobile Details Information  -->
         <section id="mobileDataInfoBox" class="mobileDetailsInfo">
+
             
+
+            <!-- This place content create dynamically -->
         </section>
 
         <!-- Mobile Card Html markup start -->
@@ -49,9 +52,10 @@
                 </div>
             </div>
 
+            <!-- no data found -->
             <div class="container">
                 <div id="noDataFound" class="notFoundData">
-                    <p>No Data Found your search result</p>
+                    <p id="errorMass">No Data Found your search result</p>
                 </div>
             </div>
         </section>

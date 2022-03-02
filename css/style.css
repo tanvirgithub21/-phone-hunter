@@ -10,6 +10,7 @@ body{
     font-family: 'Poppins', sans-serif;
     background-color: rgb(228, 243, 255);
     color: rgb(10, 11, 48);
+    position: relative;
 }
 h1, h2, h3, h4, h5, h6{
     font-family: 'Roboto', sans-serif;
@@ -80,4 +81,23 @@ h1, h2, h3, h4, h5, h6{
 }
 .mobileImg .imgWrap img{
     width: 100%;
+}
+
+
+/* spinier style start  */
+#loading{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+.spinner-border{
+    width: 6rem;
+    height: 6rem;
+}
+.position{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
