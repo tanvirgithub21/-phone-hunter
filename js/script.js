@@ -44,7 +44,7 @@ const displayPhoneUI = (phones, availableData) => {
     if(availableData){
         for(phone of fast20phone){
             const addNewCard = document.createElement("div");
-            addNewCard.classList.add('card', 'cardBox', 'col-md-3', 'my-3');
+            addNewCard.classList.add('card', 'cardBox', 'col-md-3', 'col-12', 'col-sm-12', 'my-3');
     
             addNewCard.innerHTML = `
                 <img src=${phone.image} class="card-img-top" id="phoneImg"  alt="iphone">
